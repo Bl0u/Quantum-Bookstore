@@ -92,7 +92,9 @@ EBookEntity
 ### 3. Purchasing Shippable Books (`buy_book_shippable()`)
 
 **Description:** When purchasing a shippable item (Paper Book), it's shipped to the customer's address.
+
 **PDF:** Paper book which have stock and may be shipped
+
 **Implementation:**  
 Customer buys a PaperBook, triggers shipping logic.
 
@@ -128,7 +130,9 @@ Quantum book store: Purchase complete. Amount paid: 32.97
 ---
 
 ### 4. Purchasing Emailable Books (`buy_book_emailable()`)
-**PDF:** EBook which have a fi letype and may be sent via email
+
+**PDF:** EBook which have a file type and may be sent via email
+
 **Description:** When purchasing an emailable book (E-Book), it's sent to the customer's email.
 
 **Implementation:**  
@@ -166,7 +170,9 @@ Quantum book store: Purchase complete. Amount paid: 45.99
 ---
 
 ### 5. Attempting to Purchase Demo Books (`buy_demo_book()`)
+
 **PDF:** Showcase/Demo book which is not for sale
+
 **Description:** Demonstrates that demo books cannot be purchased.
 
 **Implementation:**  
@@ -199,7 +205,9 @@ Exception in thread "main" java.lang.IllegalArgumentException: Book not for sale
 ### 6. Removing Outdated Stock (`remove_outdate_stock()`)
 
 **Description:** Removes books that have been published for 4 years or more from the current date.
+
 **PDF:** Remove and return outdated books that passed specifi c number of years
+
 **Implementation:**  
 Removes books that are outdated and displays remaining inventory.
 
