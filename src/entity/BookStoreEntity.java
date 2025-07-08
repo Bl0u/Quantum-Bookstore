@@ -34,6 +34,8 @@ public class BookStoreEntity {
             BookEntity book = inventory.get(ISBN);
             if (book instanceof PaperBookEntity){
                 ((PaperBookEntity) book).setQuantity(quantity);
+            } else {
+                throw new IllegalArgumentException("This book isn't of type Paper Book");
             }
         }
     }
@@ -42,6 +44,8 @@ public class BookStoreEntity {
             BookEntity book = inventory.get(ISBN);
             if (book instanceof EBookEntity){
                 ((EBookEntity) book).setFileType(fileType);
+            } else {
+                throw new IllegalArgumentException("This book isn't of type EBook");
             }
         }
     }
@@ -69,7 +73,7 @@ public class BookStoreEntity {
         Iterator<Map.Entry<String, BookEntity>> it = inventory.entrySet().iterator();
         while (it.hasNext()) {
             BookEntity book = it.next().getValue();
-            if ((currentYear - book.getYearOfPublishing()) <= maxAge) {
+            if ((currentYear - book.getYearOfPublishing()) > maxAge) {
                 removed.add(book);
                 it.remove();
                 System.out.println("Quantum book store: Removed outdated book " + book);

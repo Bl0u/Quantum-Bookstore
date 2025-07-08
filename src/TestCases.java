@@ -122,21 +122,37 @@ public class TestCases {
     }
     public void update_book_price(){
         BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second", 2023, 1.99, "PDF") ;
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
         BookStoreEntity bookStore = new BookStoreEntity() ;
         bookStore.addBook(book1);
         bookStore.displayInventory();
         bookStore.buyBook("ISBN1", 2, customer) ;
+        bookStore.buyBook("ISBN2", 5, customer) ;
         bookStore.displayInventory();
         System.out.println("Update price");
         bookStore.updatePrice("ISBN1", 150);
+        bookStore.updatePrice("ISBN2", 50);
         bookStore.displayInventory();
 
 
     }
     public void update_book_quantity(){
         BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
+
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+        bookStore.displayInventory();
+        bookStore.buyBook("ISBN1", 4, customer) ;
+        bookStore.displayInventory();
+        System.out.println("Update Quantity");
+        bookStore.updateQuantity("ISBN1", 3);
+        bookStore.displayInventory();
+    }
+    public void refuse_update_book_quantity(){
+        BookEntity book1 = new EBookEntity("ISBN1", "First", 2022, 99.99, "PDF") ;
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
         BookStoreEntity bookStore = new BookStoreEntity() ;
@@ -162,6 +178,20 @@ public class TestCases {
 
 
     }
+    public void refuse_update_book_file_type(){
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 3) ;
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
+
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+        bookStore.displayInventory();
+        bookStore.buyBook("ISBN1", 2, customer) ;
+        System.out.println("Update File Type");
+        bookStore.updateFileType("ISBN1", "Word");
+        bookStore.displayInventory();
+
+
+    }
     public void buy_book_with_no_enough_stock(){
         BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
 
@@ -172,6 +202,16 @@ public class TestCases {
 
         bookStore.buyBook("ISBN1", 5, customer) ;
 
+    }
+    public void buy_book_not_exist(){
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
+
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
+
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+
+        bookStore.buyBook("ISBN3", 5, customer) ;
     }
 
 }
