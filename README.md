@@ -121,7 +121,7 @@ Book store: Added book with ISBN ISBN1
 Book store: Added book with ISBN ISBN2
 Book store: Added book with ISBN ISBN3
 Book store: Added book with ISBN ISBN4
-3 Book: Third shipped to customer: Peter, at Address: El-Giza 
+3 Book: Third Book shipped to customer: Peter, at Address: El-Giza 
 Quantum book store: Purchase complete. Amount paid: 32.97
 ```
 
@@ -159,7 +159,7 @@ Book store: Added book with ISBN ISBN1
 Book store: Added book with ISBN ISBN2
 Book store: Added book with ISBN ISBN3
 Book store: Added book with ISBN ISBN4
-Book: Second sent to customer: Peter, at Email: peter@gmail.com
+Book: Second Book sent to customer: Peter, at Email: peter@gmail.com
 Quantum book store: Purchase complete. Amount paid: 45.99
 ```
 
@@ -204,24 +204,24 @@ Exception in thread "main" java.lang.IllegalArgumentException: Book not for sale
 Removes books that are outdated and displays remaining inventory.
 
 ```java
-public void remove_outdate_stock() {
-    BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4);
-    BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2022, 45.99, "PDF");
-    BookEntity book3 = new PaperBookEntity("ISBN3", "Third Book", 2022, 10.99, 5);
-    BookEntity book4 = new EBookEntity("ISBN4", "Fourth Book", 2022, 1.99, "Word");
+    public void remove_outdate_stock(){
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2000, 45.99, "PDF") ;
+        BookEntity book3 = new PaperBookEntity("ISBN3", "Third Book", 2019, 10.99, 5) ;
+        BookEntity book4 = new EBookEntity("ISBN4", "Fourth Book", 2022, 1.99, "Word") ;
 
-    CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com");
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
-    BookStoreEntity bookStore = new BookStoreEntity();
-    bookStore.addBook(book1);
-    bookStore.addBook(book2);
-    bookStore.addBook(book3);
-    bookStore.addBook(book4);
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+        bookStore.addBook(book2);
+        bookStore.addBook(book3);
+        bookStore.addBook(book4);
 
-    System.out.println("**Removed books that has been published since 4 ago**");
-    List<BookEntity> outdatedBooks = bookStore.removeOutdatedBooks(4);
-    bookStore.displayInventory();
-}
+        System.out.println("**Removed books that has been published since 4 ago**");
+        List<BookEntity> outdatedBooks = bookStore.removeOutdatedBooks(4);
+        bookStore.displayInventory();
+    }
 ```
 
 **Output:**
@@ -230,12 +230,13 @@ Book store: Added book with ISBN ISBN1
 Book store: Added book with ISBN ISBN2
 Book store: Added book with ISBN ISBN3
 Book store: Added book with ISBN ISBN4
-**Removed books that have been published since 4 years ago**
-Quantum book store: Removed outdated book BookEntity{ISBN='ISBN1', Title='First', Year=2000, Price=99.99, Quantity=4}
-Quantum book store: Removed outdated book BookEntity{ISBN='ISBN4', Title='Fourth', Year=2019, Price=1.99, File Type=Word}
+**Removed books that has been published since 4 ago**
+Quantum book store: Removed outdated book BookEntity{ISBN='ISBN3', Title='Third Book', Year=2019, Price=10.99, Quantity=5}
+Quantum book store: Removed outdated book BookEntity{ISBN='ISBN2', Title='Second Book', Year=2000, Price=45.99, File Type=PDF}
 **Inventory**
-BookEntity{ISBN='ISBN3', Title='Third', Year=2023, Price=10.99, Quantity=5}
-BookEntity{ISBN='ISBN2', Title='Second', Year=2022, Price=45.99, File Type=PDF}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, Quantity=4}
+BookEntity{ISBN='ISBN4', Title='Fourth Book', Year=2022, Price=1.99, File Type=Word}
+
 ```
 
 ---
@@ -298,39 +299,49 @@ BookEntity{ISBN='ISBN2', Title='Second Book', Year=2022, Price=45.99, File Type=
 Buys books, updates price, verifies with display.
 
 ```java
-public void update_book_price() {
-    BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4);
-    BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2023, 1.99, "PDF");
+    public void update_book_price(){
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2023, 1.99, "PDF") ;
 
-    CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com");
 
-    BookStoreEntity bookStore = new BookStoreEntity();
-    bookStore.addBook(book1);
-    bookStore.displayInventory();
-    bookStore.buyBook("ISBN1", 2, customer);
-    bookStore.buyBook("ISBN2", 5, customer);
-    bookStore.displayInventory();
-    System.out.println("Update price");
-    bookStore.updatePrice("ISBN1", 150);
-    bookStore.updatePrice("ISBN2", 50);
-    bookStore.displayInventory();
-}
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
+
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+        bookStore.addBook(book2);
+        bookStore.displayInventory();
+        bookStore.buyBook("ISBN1", 2, customer) ;
+        bookStore.buyBook("ISBN2", 5, customer) ;
+        bookStore.displayInventory();
+        System.out.println("Update price");
+        bookStore.updatePrice("ISBN1", 150);
+        bookStore.updatePrice("ISBN2", 50);
+        bookStore.displayInventory();
+    }
 ```
 
 **Output:**
 ```
 Book store: Added book with ISBN ISBN1
+Book store: Added book with ISBN ISBN2
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, Quantity=4}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, Quantity=4}
+BookEntity{ISBN='ISBN2', Title='Second Book', Year=2023, Price=1.99, File Type=PDF}
 
-2 Book: First shipped to customer: Peter, at Address: El-Giza 
+2 Book: First Book shipped to customer: Peter, at Address: El-Giza 
 Quantum book store: Purchase complete. Amount paid: 199.98
+Book: Second Book sent to customer: Peter, at Email: peter@gmail.com
+Quantum book store: Purchase complete. Amount paid: 1.99
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, Quantity=2}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, Quantity=2}
+BookEntity{ISBN='ISBN2', Title='Second Book', Year=2023, Price=1.99, File Type=PDF}
 
 Update price
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=150.0, Quantity=2}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=150.0, Quantity=2}
+BookEntity{ISBN='ISBN2', Title='Second Book', Year=2023, Price=50.0, File Type=PDF}
+
+
 ```
 
 ---
@@ -343,35 +354,37 @@ BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=150.0, Quantity=2}
 Buys all stock of a paper book, then increases its quantity.
 
 ```java
-public void update_book_quantity() {
-    BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4);
-    CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com");
+    public void update_book_quantity(){
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
-    BookStoreEntity bookStore = new BookStoreEntity();
-    bookStore.addBook(book1);
-    bookStore.displayInventory();
-    bookStore.buyBook("ISBN1", 4, customer);
-    bookStore.displayInventory();
-    System.out.println("Update Quantity");
-    bookStore.updateQuantity("ISBN1", 3);
-    bookStore.displayInventory();
-}
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+        bookStore.displayInventory();
+        bookStore.buyBook("ISBN1", 4, customer) ;
+        bookStore.displayInventory();
+        System.out.println("Update Quantity");
+        bookStore.updateQuantity("ISBN1", 3);
+        bookStore.displayInventory();
+    }
 ```
 
 **Output:**
 ```
 Book store: Added book with ISBN ISBN1
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, Quantity=4}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, Quantity=4}
 
-4 Book: First shipped to customer: Peter, at Address: El-Giza 
+4 Book: First Book shipped to customer: Peter, at Address: El-Giza 
 Quantum book store: Purchase complete. Amount paid: 399.96
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, Quantity=0}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, Quantity=0}
 
 Update Quantity
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, Quantity=3}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, Quantity=3}
+
+
 ```
 
 ---
@@ -384,31 +397,34 @@ BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, Quantity=3}
 Buys an EBook, then changes its file type.
 
 ```java
-public void update_book_file_type() {
-    BookEntity book1 = new EBookEntity("ISBN1", "First Book", 2022, 99.99, "PDF");
-    CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com");
+public void update_book_file_type(){
+        BookEntity book1 = new EBookEntity("ISBN1", "First Book", 2022, 99.99, "PDF") ;
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
-    BookStoreEntity bookStore = new BookStoreEntity();
-    bookStore.addBook(book1);
-    bookStore.displayInventory();
-    bookStore.buyBook("ISBN1", 2, customer);
-    System.out.println("Update File Type");
-    bookStore.updateFileType("ISBN1", "Word");
-    bookStore.displayInventory();
-}
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+        bookStore.displayInventory();
+        bookStore.buyBook("ISBN1", 2, customer) ;
+        System.out.println("Update File Type");
+        bookStore.updateFileType("ISBN1", "Word");
+        bookStore.displayInventory();
+
+
+    }
 ```
 
 **Output:**
 ```
 Book store: Added book with ISBN ISBN1
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, File Type=PDF}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, File Type=PDF}
 
-Book: First sent to customer: Peter, at Email: peter@gmail.com
+Book: First Book sent to customer: Peter, at Email: peter@gmail.com
 Quantum book store: Purchase complete. Amount paid: 99.99
 Update File Type
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, File Type=Word}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, File Type=Word}
+
 ```
 
 ---
@@ -439,9 +455,10 @@ public void buy_book_with_no_enough_stock() {
 ```
 Book store: Added book with ISBN ISBN1
 Exception in thread "main" java.lang.IllegalArgumentException: Not enough of this book in the inventory
-	at entity.BookStoreEntity.buyBook(BookStoreEntity.java:94)
-	at TestCases.buy_book_with_no_enough_stock(TestCases.java:173)
+	at entity.BookStoreEntity.buyBook(BookStoreEntity.java:98)
+	at TestCases.buy_book_with_no_enough_stock(TestCases.java:205)
 	at Main.main(Main.java:4)
+
 ```
 
 ---
@@ -454,37 +471,38 @@ Exception in thread "main" java.lang.IllegalArgumentException: Not enough of thi
 Tries to update quantity of an EBook; should throw an exception.
 
 ```java
-public void refuse_update_book_quantity() {
-    BookEntity book1 = new EBookEntity("ISBN1", "First Book", 2022, 99.99, "PDF");
-    CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com");
+    public void refuse_update_book_quantity(){
+        BookEntity book1 = new EBookEntity("ISBN1", "First Book", 2022, 99.99, "PDF") ;
+        CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
-    BookStoreEntity bookStore = new BookStoreEntity();
-    bookStore.addBook(book1);
-    bookStore.displayInventory();
-    bookStore.buyBook("ISBN1", 4, customer);
-    bookStore.displayInventory();
-    System.out.println("Update Quantity");
-    bookStore.updateQuantity("ISBN1", 3);
-    bookStore.displayInventory();
-}
+        BookStoreEntity bookStore = new BookStoreEntity() ;
+        bookStore.addBook(book1);
+        bookStore.displayInventory();
+        bookStore.buyBook("ISBN1", 4, customer) ;
+        bookStore.displayInventory();
+        System.out.println("Update Quantity");
+        bookStore.updateQuantity("ISBN1", 3);
+        bookStore.displayInventory();
+    }
 ```
 
 **Output:**
 ```
 Book store: Added book with ISBN ISBN1
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, File Type=PDF}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, File Type=PDF}
 
-Book: First sent to customer: Peter, at Email: peter@gmail.com
+Book: First Book sent to customer: Peter, at Email: peter@gmail.com
 Quantum book store: Purchase complete. Amount paid: 99.99
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, File Type=PDF}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, File Type=PDF}
 
 Update Quantity
 Exception in thread "main" java.lang.IllegalArgumentException: This book isn't of type Paper Book
 	at entity.BookStoreEntity.updateQuantity(BookStoreEntity.java:38)
-	at TestCases.refuse_update_book_quantity(TestCases.java:161)
+	at TestCases.refuse_update_book_quantity(TestCases.java:166)
 	at Main.main(Main.java:4)
+
 ```
 
 ---
@@ -515,15 +533,16 @@ public void refuse_update_book_file_type() {
 ```
 Book store: Added book with ISBN ISBN1
 **Inventory**
-BookEntity{ISBN='ISBN1', Title='First', Year=2022, Price=99.99, Quantity=3}
+BookEntity{ISBN='ISBN1', Title='First Book', Year=2022, Price=99.99, Quantity=3}
 
-2 Book: First shipped to customer: Peter, at Address: El-Giza 
+2 Book: First Book shipped to customer: Peter, at Address: El-Giza 
 Quantum book store: Purchase complete. Amount paid: 199.98
 Update File Type
 Exception in thread "main" java.lang.IllegalArgumentException: This book isn't of type EBook
 	at entity.BookStoreEntity.updateFileType(BookStoreEntity.java:48)
-	at TestCases.refuse_update_book_file_type(TestCases.java:187)
+	at TestCases.refuse_update_book_file_type(TestCases.java:192)
 	at Main.main(Main.java:4)
+
 ```
 
 ---
@@ -553,19 +572,7 @@ public void buy_book_not_exist() {
 Book store: Added book with ISBN ISBN1
 Exception in thread "main" java.lang.IllegalArgumentException: Book not found
 	at entity.BookStoreEntity.buyBook(BookStoreEntity.java:87)
-	at TestCases.buy_book_not_exist(TestCases.java:214)
+	at TestCases.buy_book_not_exist(TestCases.java:216)
 	at Main.main(Main.java:4)
+
 ```
-
----
-
-## Summary
-
-The book store management system successfully demonstrates:
-
-- ✅ **Book Management**: Adding and removing books from inventory
-- ✅ **Purchase System**: Different handling for shippable vs. emailable books
-- ✅ **Inventory Control**: Automatic quantity reduction and stock management
-- ✅ **Update Operations**: Price, quantity, and file type modifications
-- ✅ **Error Handling**: Proper validation and exception throwing
-- ✅ **Business Logic**: Demo books restriction and type-specific logic
