@@ -131,9 +131,9 @@ Quantum book store: Purchase complete. Amount paid: 32.97
 
 ### 4. Purchasing Emailable Books (`buy_book_emailable()`)
 
-**PDF:** EBook which have a file type and may be sent via email
-
 **Description:** When purchasing an emailable book (E-Book), it's sent to the customer's email.
+
+**PDF:** EBook which have a file type and may be sent via email
 
 **Implementation:**  
 Customer buys an EBook, triggers email delivery logic.
@@ -171,9 +171,9 @@ Quantum book store: Purchase complete. Amount paid: 45.99
 
 ### 5. Attempting to Purchase Demo Books (`buy_demo_book()`)
 
-**PDF:** Showcase/Demo book which is not for sale
-
 **Description:** Demonstrates that demo books cannot be purchased.
+
+**PDF:** Showcase/Demo book which is not for sale
 
 **Implementation:**  
 Attempts to buy a DemoBook; should throw an exception.
