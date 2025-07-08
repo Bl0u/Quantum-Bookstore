@@ -9,11 +9,11 @@ import java.util.List;
 public class TestCases {
 
     public void add_book(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
-        BookEntity book2 = new EBookEntity("ISBN2", "Second", 2022, 45.99, "PDF") ;
-        BookEntity book3 = new PaperBookEntity("ISBN3", "Third", 2022, 10.99, 5) ;
-        BookEntity book4 = new EBookEntity("ISBN4", "Foruth", 2022, 1.99, "Word") ;
-        BookEntity book5 = new DemoBookEntity("ISBN5", "Demo", 2020, 150.99) ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2022, 45.99, "PDF") ;
+        BookEntity book3 = new PaperBookEntity("ISBN3", "Third Book", 2022, 10.99, 5) ;
+        BookEntity book4 = new EBookEntity("ISBN4", "Fourth Book", 2022, 1.99, "Word") ;
+        BookEntity book5 = new DemoBookEntity("ISBN5", "Demo Book", 2020, 150.99) ;
 
 
         BookStoreEntity store = new BookStoreEntity() ;
@@ -28,10 +28,10 @@ public class TestCases {
         });
     }
     public void remove_book(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
-        BookEntity book2 = new EBookEntity("ISBN2", "Second", 2022, 45.99, "PDF") ;
-        BookEntity book3 = new PaperBookEntity("ISBN3", "Third", 2022, 10.99, 5) ;
-        BookEntity book4 = new EBookEntity("ISBN4", "Foruth", 2022, 1.99, "Word") ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2022, 45.99, "PDF") ;
+        BookEntity book3 = new PaperBookEntity("ISBN3", "Third Book", 2022, 10.99, 5) ;
+        BookEntity book4 = new EBookEntity("ISBN4", "Fourth Book", 2022, 1.99, "Word") ;
 
         BookStoreEntity store = new BookStoreEntity() ;
         store.addBook(book1);
@@ -46,10 +46,10 @@ public class TestCases {
         });
     }
     public void buy_book_shippable(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
-        BookEntity book2 = new EBookEntity("ISBN2", "Second", 2022, 45.99, "PDF") ;
-        BookEntity book3 = new PaperBookEntity("ISBN3", "Third", 2022, 10.99, 5) ;
-        BookEntity book4 = new EBookEntity("ISBN4", "Foruth", 2022, 1.99, "Word") ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2022, 45.99, "PDF") ;
+        BookEntity book3 = new PaperBookEntity("ISBN3", "Third Book", 2022, 10.99, 5) ;
+        BookEntity book4 = new EBookEntity("ISBN4", "Fourth Book", 2022, 1.99, "Word") ;
 
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
@@ -62,10 +62,10 @@ public class TestCases {
         bookStore.buyBook("ISBN3", 3, customer) ;
     }
     public void buy_book_emailable(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
-        BookEntity book2 = new EBookEntity("ISBN2", "Second", 2022, 45.99, "PDF") ;
-        BookEntity book3 = new PaperBookEntity("ISBN3", "Third", 2022, 10.99, 5) ;
-        BookEntity book4 = new EBookEntity("ISBN4", "Foruth", 2022, 1.99, "Word") ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2022, 45.99, "PDF") ;
+        BookEntity book3 = new PaperBookEntity("ISBN3", "Third Book", 2022, 10.99, 5) ;
+        BookEntity book4 = new EBookEntity("ISBN4", "Fourth Book", 2022, 1.99, "Word") ;
 
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
@@ -78,7 +78,7 @@ public class TestCases {
         bookStore.buyBook("ISBN2", 5, customer) ;
     }
     public void buy_dmeo_book(){
-        BookEntity book = new DemoBookEntity("ISBN1", "Demo", 2020, 150.99) ;
+        BookEntity book = new DemoBookEntity("ISBN1", "Demo Book", 2020, 150.99) ;
 
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
@@ -88,10 +88,10 @@ public class TestCases {
         bookStore.buyBook("ISBN1", 3, customer) ;
     }
     public void remove_outdate_stock(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2000, 99.99, 4) ;
-        BookEntity book2 = new EBookEntity("ISBN2", "Second", 2022, 45.99, "PDF") ;
-        BookEntity book3 = new PaperBookEntity("ISBN3", "Third", 2023, 10.99, 5) ;
-        BookEntity book4 = new EBookEntity("ISBN4", "Foruth", 2019, 1.99, "Word") ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2000, 45.99, "PDF") ;
+        BookEntity book3 = new PaperBookEntity("ISBN3", "Third Book", 2019, 10.99, 5) ;
+        BookEntity book4 = new EBookEntity("ISBN4", "Fourth Book", 2022, 1.99, "Word") ;
 
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
@@ -106,8 +106,8 @@ public class TestCases {
         bookStore.displayInventory();
     }
     public void buy_book_reduce_quantity(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
-        BookEntity book2 = new EBookEntity("ISBN4", "Foruth", 2022, 1.99, "Word") ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2022, 45.99, "PDF") ;
 
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
@@ -117,16 +117,20 @@ public class TestCases {
 
         bookStore.displayInventory();
         bookStore.buyBook("ISBN1", 3, customer) ;
+        bookStore.buyBook("ISBN2", 3, customer) ;
         System.out.println("\n Notice that the quantity of ISBN1 has been reduced");
         bookStore.displayInventory();
     }
     public void update_book_price(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
-        BookEntity book2 = new EBookEntity("ISBN2", "Second", 2023, 1.99, "PDF") ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
+        BookEntity book2 = new EBookEntity("ISBN2", "Second Book", 2023, 1.99, "PDF") ;
+
+
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
         BookStoreEntity bookStore = new BookStoreEntity() ;
         bookStore.addBook(book1);
+        bookStore.addBook(book2);
         bookStore.displayInventory();
         bookStore.buyBook("ISBN1", 2, customer) ;
         bookStore.buyBook("ISBN2", 5, customer) ;
@@ -135,11 +139,9 @@ public class TestCases {
         bookStore.updatePrice("ISBN1", 150);
         bookStore.updatePrice("ISBN2", 50);
         bookStore.displayInventory();
-
-
     }
     public void update_book_quantity(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 4) ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 4) ;
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
         BookStoreEntity bookStore = new BookStoreEntity() ;
@@ -152,7 +154,7 @@ public class TestCases {
         bookStore.displayInventory();
     }
     public void refuse_update_book_quantity(){
-        BookEntity book1 = new EBookEntity("ISBN1", "First", 2022, 99.99, "PDF") ;
+        BookEntity book1 = new EBookEntity("ISBN1", "First Book", 2022, 99.99, "PDF") ;
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
         BookStoreEntity bookStore = new BookStoreEntity() ;
@@ -165,7 +167,7 @@ public class TestCases {
         bookStore.displayInventory();
     }
     public void update_book_file_type(){
-        BookEntity book1 = new EBookEntity("ISBN1", "First", 2022, 99.99, "PDF") ;
+        BookEntity book1 = new EBookEntity("ISBN1", "First Book", 2022, 99.99, "PDF") ;
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
         BookStoreEntity bookStore = new BookStoreEntity() ;
@@ -179,7 +181,7 @@ public class TestCases {
 
     }
     public void refuse_update_book_file_type(){
-        BookEntity book1 = new PaperBookEntity("ISBN1", "First", 2022, 99.99, 3) ;
+        BookEntity book1 = new PaperBookEntity("ISBN1", "First Book", 2022, 99.99, 3) ;
         CustomerEntity customer = new CustomerEntity("Peter", "El-Giza", "peter@gmail.com") ;
 
         BookStoreEntity bookStore = new BookStoreEntity() ;
