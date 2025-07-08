@@ -4,10 +4,6 @@ import entity.CustomerEntity;
 import entity.book_type.DemoBookEntity;
 import entity.book_type.EBookEntity;
 import entity.book_type.PaperBookEntity;
-import org.omg.IOP.CodecPackage.InvalidTypeForEncoding;
-
-import java.awt.print.Book;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestCases {
